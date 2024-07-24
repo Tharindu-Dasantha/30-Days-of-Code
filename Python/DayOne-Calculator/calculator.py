@@ -7,7 +7,7 @@ ctk.set_default_color_theme("dark-blue")
 # Create the main application window
 root = ctk.CTk()
 root.title("Calculator")
-root.geometry('400x500')
+root.geometry('350x500')
 root.resizable(False, False)
 
 equation = ""
@@ -21,12 +21,12 @@ font = ("Helvetica", 22, "bold")
 def show(value):
     global equation
     equation += value
-    label_results.config(text=equation)
+    label_results.configure(text=equation)
 
 def clear():
     global equation
     equation = ""
-    label_results.config(text=equation)
+    label_results.configure(text=equation)
 
 def calculate():
     global equation
@@ -35,16 +35,16 @@ def calculate():
         try:
             result = str(eval(equation))
             equation = result
-            label_results.config(text=equation)
+            label_results.configure(text=equation)
         except Exception as e:
-            label_results.config(text="Error")
+            label_results.configure(text="Error")
 
 # Create label for displaying results
-label_results = ctk.CTkLabel(root, text="", font=font, bg_color=background_color, text_color=text_color)
-label_results.grid(row=0, column=0, columnspan=4, pady=20, sticky="nsew")
+label_results = ctk.CTkLabel(root, text="", font=font, bg_color=background_color, text_color=text_color, height=70, width=300)
+label_results.grid(row=0, column=0, columnspan=4, pady=20, padx=15, sticky="nsew")
 
 # Configure grid layout
-root.columnconfigure(0, weight=1) 
+# root.columnconfigure(0, weight=1) 
 
 # Button styling
 button_style = {
@@ -66,14 +66,14 @@ buttons = [
 
 for (text, row, column) in buttons:
     if text == "=":
-        btn = ctk.CTkButton(root, text=text, width=50, height=50, command=calculate, **button_style)
+        btn = ctk.CTkButton(root, text=text, width=65, height=65, command=calculate, **button_style)
     else:
-        btn = ctk.CTkButton(root, text=text, width=50, height=40, command=lambda value=text: show(value), **button_style)
+        btn = ctk.CTkButton(root, text=text, width=65, height=65, command=lambda value=text: show(value), **button_style)
     btn.grid(row=row + 1, column=column, padx=5, pady=5)
 
 # Clear button
-clear_button = ctk.CTkButton(root, text="C", width=50, height=20, command=clear, **button_style)
-clear_button.grid(row=1, column=0, padx=5, pady=5)
+clear_button = ctk.CTkButton(root, text="C", width=65, height=65, command=clear, **button_style)
+clear_button.grid(row=1, column=0, padx=3, pady=3)
 
 # Set background color
 root.configure(bg=background_color)
