@@ -1,0 +1,19 @@
+{
+    "projects": [
+        {
+            "title": "Calculator App",
+            "description": "Calculator app to do math calculations",
+            "url": "https://github.com/Tharindu-Dasantha/30-Days-of-Code/tree/main/Python/1.DayOne-Calculator"
+        },
+        {
+            "title": "Spell Checker App",
+            "description": "Check spelling of a given word",
+            "url": "https://github.com/Tharindu-Dasantha/30-Days-of-Code/tree/main/Python/2.DayTwo-SpellingChecker"
+        },
+        {
+            "title": "",
+            "description": "",
+            "url": ""
+        }
+    ]
+}
