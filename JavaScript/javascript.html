@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Projects</title>
     <style>
+        :root {
+            --primary_color: #44576d;
+            --secondary_color: #768a96;
+            --background_color: #aac7d8;
+            --additional_color: #e6e6e6;
+            --font_color: #29353c;
+        }
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f0f0f0;
+            background: var(--background_color);
+            color: var(--font_color);
         }
 
         h1 {
-            color: #3498db;
+            color: var(--font_color);
             font-size: 2.5rem;
 
         }
@@ -28,18 +36,90 @@
        }
 
        .projects {
-        border: 2px solid #d9d9d9ee;
+        border: 2px solid var(--additional_color);
         width: 70vw;
         height: auto;
         border-radius: 20px;
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        background-color: var(--primary_color);
+        justify-content: center;
+       }
+
+       .project {
+        border: 1px solid var(--additional_color);
+        margin: 1em;
+        border-radius: 1em;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--secondary_color);
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+       }
+
+       .project h2 {
+        color: var(--primary_color);
+       }
+
+       .link {
+        text-decoration: none;
+        color: var(--background_color);
+        font-weight: bold;
+
+       }
+
+       .link:hover {
+        color: var(--primary_color);
+        text-decoration: underline;
+        cursor: pointer;
        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>JavaScript Projects</h1>
-        <div class="projects"></div>
+        <div class="projects" id="projects">
+            <!-- adding the project cards -->
+        </div>
         <h6>Created by <a href="mailto:t.dasanthaedirisinghe@gmail.com">Tharindu Edirisinge</a></h6>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let porjectContainer = document.getElementById("projects")
+
+            fetch('projects.json')
+            .then(response=>response.json())
+            .then(data=> {
+
+                data.projects.forEach(project => { 
+                    let projectCard = document.createElement("div")
+                    projectCard.classList.add("project")
+                    
+                    let titleElement = document.createElement("h2")
+                    titleElement.textContent = project.title;
+                    projectCard.appendChild(titleElement)
+                    
+                    let descriptionElement = document.createElement("p")
+                    descriptionElement.textContent = project.description;
+                    projectCard.appendChild(descriptionElement)
+                    
+                    let linkElement = document.createElement("a")
+                    linkElement.textContent = "View Project"
+                    linkElement.href = project.link;
+                    linkElement.classList.add("link")
+                    projectCard.appendChild(linkElement)
+                    
+                    porjectContainer.appendChild(projectCard);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching projects: ', error)
+            })
+        })
+    </script>
 </body>
 </html>

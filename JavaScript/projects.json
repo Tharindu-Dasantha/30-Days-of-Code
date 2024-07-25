@@ -1,0 +1,19 @@
+{
+    "projects": [
+        {
+            "title": "QR Code Generator",
+            "description": "Generates QR Code for given URL",
+            "url": "1.DayOne-QRCodeGenerator/index.html"
+        },
+        {
+            "title": "Password Toggle Bar",
+            "description": "Toggle the password bar to be visible to hidden",
+            "url": "2.DayTwo-passwordToggle/index.html"
+        },
+        {
+            "title": "",
+            "description": "",
+            "url": ""
+        }
+    ]
+}
