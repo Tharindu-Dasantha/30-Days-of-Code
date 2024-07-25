@@ -26,7 +26,7 @@ enter_text=Entry(root, justify="center", width=30, font=("poppins", 25), bg="whi
 enter_text.pack(pady=10)
 enter_text.focus()
 
-button = Button(root, text="Check", font=("helvetica, arial", 20, "bold"), fg="white", bg="red", command=check_spelling)
+button = Button(root, text="Check", font=("helvetica, arial", 20, "bold"), fg="white", bg="#d1001f", command=check_spelling)
 button.pack()
 
 spell=Label(root, font=("poppins", 20), bg="#dae6f6", fg="#364971")
