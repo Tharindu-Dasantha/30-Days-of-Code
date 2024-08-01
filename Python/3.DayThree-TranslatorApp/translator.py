@@ -13,6 +13,14 @@ def gui():
     TitleLable = tk.Label(text="Translator Application", font=bold_font, fg="#003135", bg="#afdde5")
     TitleLable.pack(pady=(20,0))
 
+    # Creaating two text boxes
+    editable_text = tk.Entry(root, width=50, height=20)
+    editable_text.pack(side="left")
+
+    non_editable_text = tk.Entry(root)
+    non_editable_text.configure(state="disabled")
+    non_editable_text.pack(side="right")
+
 
     root.mainloop()
 
